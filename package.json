@@ -8,6 +8,7 @@
     "http": "0.0.0",
     "mongodb": "^3.0.5",
     "mongoose": "^5.0.13",
+    "node": "^9.11.0",
     "path": "^0.12.7",
     "serve-index": "^1.9.1",
     "socketio": "^1.0.0"
