@@ -62,6 +62,7 @@ button{
 	height: 320px;;
 	overflow-y:auto;
 	scroll-behavior: auto;
+	position : relative; bottom:0;
 	/* overflow-x:auto; */
 	width: 350px;
 	word-wrap: break-word
