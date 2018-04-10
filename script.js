@@ -30,7 +30,7 @@ function getGameID(){
     gameid = "Unknown Game ID/ Problem with Session Storage";
   }
   document.getElementById('hiddenGameID').value = gameid;
-  console.log(document.getElementById('hiddenGameID').value);
+  // console.log(document.getElementById('hiddenGameID').value);
 
   return gameid;
 }
@@ -94,7 +94,7 @@ function saveLocalFile(){
 socket.on('login', function(data){
   var usern = document.getElementById('user');
   socket.emit('login', {socketID: socket.id, userName: usern.value} ) ;
-  console.log(socket.userName, " is logged in (client side)");
+  // console.log(socket.userName, " is logged in (client side)");
 });
 
 var gameID;
@@ -189,7 +189,7 @@ socket.on('bPress', function(data){
   var solution;
   var infoBox = document.getElementById('infoScreen');
 
-  console.log("Player", thisPlayer, "Pressed a Button, name is", data.username)
+  // console.log("Player", thisPlayer, "Pressed a Button, name is", data.username)
 
   //if player 1 and current turn is an even number
   if(thisPlayer === 1 && playerS[data.butPos] ===0 && turnCount%2 ==0){
@@ -270,7 +270,7 @@ function quitGame(){
 **/
 function recievedOtherPlayer(otherPlayer, quitter){
   var winner = otherPlayer;
-    console.log("OtherPlayer is...", winner, "Emitting to matchComplete");
+    console.log("Winner by default is...", winner, "Emitting to matchComplete");
     gameEnded = true;
 
     socket.emit('matchComplete', {winner: 2 , gameID: thisGameID,

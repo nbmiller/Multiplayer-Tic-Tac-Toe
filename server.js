@@ -108,9 +108,9 @@ db.once('open', function(){
           console.log(err);
         if (!doc)
          console.log("Unknown Player logged in was NOT logged out on startup");
-        else{
-          console.log(doc.username, " logged in previously was logged out successfully");
-        }
+        // else{
+        //   console.log(doc.username, " logged in previously was logged out successfully");
+        // }
       });
     });
   });
@@ -215,8 +215,8 @@ socket.on('logout', function(data){
        {upsert:false}, function(err, doc){
       if (err)
         console.log(err);
-      if (!doc)
-       console.log(data.username, " NOT LOGGED OUT PROPERLY");
+      // if (!doc)
+      //  console.log(data.username, " NOT LOGGED OUT PROPERLY");
       else{
         // console.log(doc.username, " is logged out ");
         // return fs.createReadStream(__dirname + '/secure/game.html');
@@ -376,9 +376,9 @@ socket.on('logout', function(data){
   socket.on('matchMake', function(data){
 
     var thisSocket = socket.id;
-    console.log("Current Socket ID: ", socket.id);
+    // console.log("Current Socket ID: ", socket.id);
     var thisUser = data.userName;
-    console.log("Current Username: ", data.userName);
+    // console.log("Current Username: ", data.userName);
 
 
     //push onto arrays
@@ -389,9 +389,9 @@ socket.on('logout', function(data){
     // if(clients %2 ==0 && pSockIDs.length > 1){
     if(pSockIDs.length %2 ==0 && pSockIDs.length !== 0){//////////////////////
       var prevSocket = pSockIDs[pSockIDs.length -2];
-      console.log("Previous Socket ID: ", prevSocket);
+      // console.log("Previous Socket ID: ", prevSocket);
       var prevUser = pNames[pNames.length -2];
-      console.log("Previous Username: ", prevUser);
+      // console.log("Previous Username: ", prevUser);
 
        var startDate =Date.now();
 
@@ -412,15 +412,15 @@ socket.on('logout', function(data){
            }
            else{
 
-             console.log(prevSocket, " is the prev socket ID (before)");
+             // console.log(prevSocket, " is the prev socket ID (before)");
              var prevSObj =io.of('/').connected[prevSocket];
 
-             console.log(prevSObj.id, " is the prev socket ID ");
+             // console.log(prevSObj.id, " is the prev socket ID ");
              thisGameID = thisGame._id;
              socket.gameID = thisGameID; //set socket to game ID
-             console.log(socket.gameID, " is the set socket Game ID ");
+             // console.log(socket.gameID, " is the set socket Game ID ");
              prevSObj.gameID = thisGameID; //set prev socket to game ID
-             console.log(prevSObj.gameID, " is the prev set socket Game ID ");
+             // console.log(prevSObj.gameID, " is the prev set socket Game ID ");
              var userName;
              //make both sockets join room
              // socket.join(thisGameID);
@@ -435,8 +435,8 @@ socket.on('logout', function(data){
                   {upsert:false}, function(err, doc){
                  if (err)
                    console.log(err);
-                 if (!doc)
-                  console.log(userName, " NOT ADDED to game ", thisGame._id);
+                 // if (!doc)
+                 //  console.log(userName, " NOT ADDED to game ", thisGame._id);
                  else{
                    console.log(userName, " is added to game ", thisGame._id);
 
@@ -452,8 +452,8 @@ socket.on('logout', function(data){
                       {upsert:false}, function(err, doc){
                      if (err)
                        console.log(err);
-                     if (!doc)
-                      console.log(userName, " NOT ADDED to game ", thisGame._id);
+                     // if (!doc)
+                     //  console.log(userName, " NOT ADDED to game ", thisGame._id);
                      else{
                        console.log(userName, " is added to game ", thisGame._id);
                        // return fs.createReadStream(__dirname + '/secure/game.html');
@@ -492,8 +492,8 @@ socket.on('logout', function(data){
          {upsert:false}, function(err, doc){
         if (err)
           console.log(err);
-        if (!doc)
-         console.log(pSocket, " NOT LOGGED OUT PROPERLY");
+        // if (!doc)
+        //  console.log(pSocket, " NOT LOGGED OUT PROPERLY");
         else{
           // console.log(doc.username, " is logged out ");
           if(pSockIDs.length > 0 && pNames.length > 0){
