@@ -410,13 +410,14 @@ function sendMsg(){
 ** On Socket Message Sent
 **/
 socket.on('messageSent', function(data){
+  var isScrolledToBottom = output.scrollHeight - output.clientHeight <= output.scrollTop + 1;
     output.innerHTML += '<p><strong>' + data.userName +
     ":  </strong>"+ data.message +'</p>'
     //empty message text field
     var message = document.getElementById('message').value ="";
 
     // allow 1px inaccuracy by adding 1
-    var isScrolledToBottom = output.scrollHeight - output.clientHeight <= output.scrollTop + 1;
+
     if(isScrolledToBottom)
         output.scrollTop = output.scrollHeight - output.clientHeight;
 });
