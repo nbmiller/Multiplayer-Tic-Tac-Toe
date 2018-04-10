@@ -148,6 +148,7 @@ io.on('connection', function(socket){
   /*
   ** On Get Online User Count
   ** May not be necessary to query db if clients var is accurate
+  ** May be temporary race condition as user switches pages
   */
   socket.on('getOnlineUserCount', function(data){
     // query = {'loggedIn': true};

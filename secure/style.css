@@ -61,6 +61,7 @@ button{
 #output{
 	height: 320px;;
 	overflow-y:auto;
+	scroll-behavior: auto;
 	/* overflow-x:auto; */
 	width: 350px;
 	word-wrap: break-word
