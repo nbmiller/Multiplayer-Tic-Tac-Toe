@@ -147,21 +147,22 @@ io.on('connection', function(socket){
 
   /*
   ** On Get Online User Count
+  ** May not be necessary to query db if clients var is accurate
   */
   socket.on('getOnlineUserCount', function(data){
-    query = {'loggedIn': true};
-    var numUsers=0;
-    User.find(query, function(err, doc){
-      if (err)
-        console.log(err);
-      if (!doc)
-       console.log(" Socket not found in DB on join ");
-      else{
-        doc.forEach(function(user, err){
-          if (err)   console.log(err);
-          numUsers++;
-        });
-        console.log('Client Count: ', clients);
+    // query = {'loggedIn': true};
+    // var numUsers=0;
+    // User.find(query, function(err, doc){
+    //   if (err)
+    //     console.log(err);
+    //   if (!doc)
+    //    console.log(" Socket not found in DB on join ");
+    //   else{
+    //     doc.forEach(function(user, err){
+    //       if (err)   console.log(err);
+    //       numUsers++;
+    //     });
+    //     console.log('Client Count: ', clients);
         socket.emit('gotOnlineUserCount', {clients: clients,numUsers: numUsers, inGame: pNames.length });
       }
 
