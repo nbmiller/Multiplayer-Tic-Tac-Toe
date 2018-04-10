@@ -7,7 +7,9 @@ var bodyParser = require("body-parser");
 var dateFormat = require('dateformat');
 var socketIO = require('socket.io');
 var path = require('path');
-var server = http.createServer(app).listen(8080);
+// var server = http.createServer(app).listen(8080);
+var port = process.env.PORT || 8080;
+var server = http.createServer(app).listen(port);
 var fs = require('fs');
 var io = require('socket.io')(server);
 
