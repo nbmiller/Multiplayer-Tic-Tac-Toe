@@ -7,6 +7,7 @@ var socket = io.connect(window.location.protocol + '//' + window.location.hostna
 // var socket = io.connect("http://localhost:8080");
 /*
 ** Start on viewHistory.html, get playername and login
+*****************************************************************************
 **/
 function start(){
 
@@ -62,6 +63,7 @@ function getLocalFile(){
 
 /*
 ** Get Number of Online Users from Server
+*****************************************************************************
 **/
 var timer = setInterval(function(){ getOnlineUserCount() }, 1000);
 

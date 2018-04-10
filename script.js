@@ -253,6 +253,7 @@ var otherPlayer;
 
 /*
 ** Quit Game and try to recieve other player
+********************************************************************************
 **/
 function quitGame(){
   if(gameEnded === false){
@@ -354,6 +355,7 @@ function getOtherPlayer(quitter, thisGameID){
 
 /*
 ** Update Info Screen of who's turn it is
+*********************************************************************************
 **/
 socket.on('changeTurn', function(data){
   // console.log(data.turnCount, "is the Turn, Entering ChangeTurn");
@@ -378,6 +380,7 @@ function changeInfoScreen(){
 
 /*
 ** Send Message To Other Player
+******************************************************************************
 **/
 
 var input = document.getElementById("message");
@@ -433,6 +436,7 @@ var p2answerKey = new Array();
 
   /*
   ** Check Answers of Game
+  **************************************************************************
   **/
 function checkAnswers(tsize){
   var thisBox1;

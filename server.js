@@ -36,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /*
 ** SCHEMA
 ** STUFF
+*******************************************************************************
 */
 var Schema = mongoose.Schema;
 // instantiate the constructor
@@ -94,6 +95,7 @@ var Game = mongoose.model('game', gameSchema);
 /*
 ** On Database Connection
 ** logout users that may have been logged in when server was closed
+*****************************************************************************
 */
 db.once('open', function(){
   var resultArray= [];//[];
@@ -118,14 +120,15 @@ console.log('connection success');
 });
 
 /*
-** SOCKET
-** STUFF
+** SOCKET  ***************************************************************
+** STUFF   ***************************************************************
 */
 var clients = 0;  //num clients
 // var prevGameID =null;
 var pSockIDs = new Array(); //Socket IDs Connected Array
 var pNames = new Array(); //Player names Connected
 var firstRun = true;
+
 /*
 ** On Socket Connection
 */
@@ -139,11 +142,10 @@ io.on('connection', function(socket){
   ** On Chat Send Message
   */
   socket.on('sendMessage', function(data){
-    // console.log(data.gameID, "is the game ID the button press occured");
-    // console.log(io.sockets.in(data.gameID).length, "is the number of users in the room"  );``
     io.sockets.in(data.gameID).emit('messageSent', data);  //Broadcast to all sockets in room
     // wss.sockets.in(data.gameID).emit('messageSent', data);
   });
+
 
   /*
   ** On Get Online User Count
@@ -168,11 +170,6 @@ io.on('connection', function(socket){
         // socket.emit('gotOnlineUserCount', {clients: clients,numUsers: numUsers, inGame: pNames.length });
       // }
 
-    // console.log(data.gameID, "is the game ID the button press occured");
-    // console.log(io.sockets.in(data.gameID).length, "is the number of users in the room"  );``
-    // io.sockets.in(data.gameID).emit('messageSent', data);  //Broadcast to all sockets in room
-
-    // wss.sockets.in(data.gameID).emit('messageSent', data);
   // });
   });
 
@@ -180,7 +177,6 @@ io.on('connection', function(socket){
   ** On Socket Join Room
   */
   socket.on('join', function(data){
-    // io.broadcast.to(socket.gameID).emit('bPress', data);
     var count=0;
     // console.log(data.gameID, "is the game ID socket is trying to join");
     socket.join(data.gameID);
@@ -233,8 +229,6 @@ io.on('connection', function(socket){
        console.log(pName, " NOT  logged in ");
       // else{
         // console.log(pName, " is logged in ");
-        // return fs.createReadStream(__dirname + '/secure/game.html');
-        // socket.emit('login', data);
       // }
     });
   });
@@ -255,8 +249,6 @@ socket.on('logout', function(data){
       //  console.log(data.username, " NOT LOGGED OUT PROPERLY");
       else{
         // console.log(doc.username, " is logged out ");
-        // return fs.createReadStream(__dirname + '/secure/game.html');
-        // socket.emit('matchMakeComplete', data);
         if(pSockIDs.length > 0 && pNames.length > 0){
           pSockIDs.pop(pSocket);
           pNames.pop(doc.username);
@@ -504,12 +496,9 @@ socket.on('logout', function(data){
                        console.log(userName, " is added to game ", thisGame._id);
                        // pSockIDs.push(pSocket);
                        pNames.push(userName);
-                       // return fs.createReadStream(__dirname + '/secure/game.html');
-                       // socket.emit('matchMakeComplete', data);
                      }
                    });
                  }
-                 // io.to(thisGameID)
                  // pSockIDs.push(pSocket);
                  // pNames.push(doc.username);
                  socket.emit('matchMakeComplete', {gameID: thisGameID});
@@ -553,7 +542,6 @@ socket.on('logout', function(data){
         }
       });
 
-    //socket.emit('clientChange',clients);
     socket.broadcast.emit('clientChange',clients);
   });
 
@@ -564,6 +552,8 @@ socket.on('logout', function(data){
 /*
 ** POSTS & GETS
 ** STUFF
+****************************************************************************
+*****************************************************************************
 */
 var options = {
   dotfiles: 'ignore',
@@ -573,7 +563,7 @@ var options = {
 }
 
 app.use('/', function(req,res,next){
-  console.log(req.method, 'request:', req.url, JSON.stringify(req.body));
+  // console.log(req.method, 'request:', req.url, JSON.stringify(req.body));
   next();
 });
 
