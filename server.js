@@ -170,6 +170,7 @@ io.on('connection', function(socket){
 
     // wss.sockets.in(data.gameID).emit('messageSent', data);
   });
+  });
 
   /*
   ** On Socket Join Room
