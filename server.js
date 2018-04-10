@@ -161,6 +161,7 @@ io.on('connection', function(socket){
           if (err)   console.log(err);
           numUsers++;
         });
+        console.log('Client Count: ', clients);
         socket.emit('gotOnlineUserCount', {clients: numUsers, inGame: pNames.length });
       }
 
