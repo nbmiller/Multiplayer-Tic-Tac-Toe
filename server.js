@@ -163,7 +163,8 @@ io.on('connection', function(socket){
     //       numUsers++;
     //     });
     //     console.log('Client Count: ', clients);
-        socket.emit('gotOnlineUserCount', {clients: clients,numUsers: numUsers, inGame: pNames.length });
+        socket.emit('gotOnlineUserCount', {clients: clients, inGame: pNames.length });
+        // socket.emit('gotOnlineUserCount', {clients: clients,numUsers: numUsers, inGame: pNames.length });
       // }
 
     // console.log(data.gameID, "is the game ID the button press occured");
