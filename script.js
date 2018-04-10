@@ -1,6 +1,7 @@
 
 
-var socket = io.connect("http://localhost:8080");
+// var socket = io.connect("http://localhost:8080");
+var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':{{port}}');
 var playerS = new Array(); //array of currently selected buttons in game
 
 
