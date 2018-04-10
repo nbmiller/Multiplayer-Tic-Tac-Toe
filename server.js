@@ -298,7 +298,7 @@ socket.on('logout', function(data){
       if(!doc)//|| doc.password !== pass)
        console.log(data.gameID, "UNSUCCESSFULLY GOT OTHER PLAYER");
        else{
-         pNames.pop(data.thisPlayer);
+         // pNames.pop(data.thisPlayer);
          // console.log(doc.players.length, "is length of player array to find other player");
          for(var i = 0;i< doc.players.length;i++){
            // console.log(doc.players[i].playerName, "is current player");
@@ -353,6 +353,9 @@ socket.on('logout', function(data){
           query =  {'username': winnerName};
           update= {$inc : {'ties' : 1}};
         }
+        pNames.pop(winnerName);
+        pNames.pop(data.loserName);
+
           User.findOneAndUpdate(query, update,
              {upsert:false}, function(err, doc){
             if (err)

@@ -272,7 +272,7 @@ function recievedOtherPlayer(otherPlayer, quitter){
   var winner = otherPlayer;
     console.log("Winner by default is...", winner, "Emitting to matchComplete");
     gameEnded = true;
-    socket.emit('popFromActivePlayers', {gameID: data.GameID, userID: otherPlayer});
+
     socket.emit('matchComplete', {winner: 2 , gameID: thisGameID,
        winnerName: winner, loserName: quitter, turnCount: turnCount, matchEndedEarly: true});
     // socket.emit('onePlayerQuit', {gameID: thisGameID, winner: winner});
@@ -303,7 +303,7 @@ socket.on('onePlayerQuit', function(data){
   quitB.addEventListener("click", function(event) {
     // Cancel the default action, if needed
     event.preventDefault();
-    socket.emit('popFromActivePlayers', {gameID: data.GameID, userID: data.winner});
+    // socket.emit('popFromActivePlayers', {gameID: data.GameID, userID: data.winner});
     sendToHistory();
   });
 });
