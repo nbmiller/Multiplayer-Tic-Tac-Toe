@@ -415,7 +415,13 @@ socket.on('messageSent', function(data){
     //empty message text field
     var message = document.getElementById('message').value ="";
 
+    // allow 1px inaccuracy by adding 1
+    var isScrolledToBottom = output.scrollHeight - output.clientHeight <= output.scrollTop + 1;
+    if(isScrolledToBottom)
+        output.scrollTop = output.scrollHeight - output.clientHeight;
 });
+
+
 
 
 //Player answer keys arrays
