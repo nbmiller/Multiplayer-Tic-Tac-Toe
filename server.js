@@ -164,14 +164,14 @@ io.on('connection', function(socket){
     //     });
     //     console.log('Client Count: ', clients);
         socket.emit('gotOnlineUserCount', {clients: clients,numUsers: numUsers, inGame: pNames.length });
-      }
+      // }
 
     // console.log(data.gameID, "is the game ID the button press occured");
     // console.log(io.sockets.in(data.gameID).length, "is the number of users in the room"  );``
     // io.sockets.in(data.gameID).emit('messageSent', data);  //Broadcast to all sockets in room
 
     // wss.sockets.in(data.gameID).emit('messageSent', data);
-  });
+  // });
   });
 
   /*
