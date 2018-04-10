@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+
+    <title>Player Login</title>
+
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="./jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
+    <script src="./login.js"></script>
+</head>
+<body>
+
+
+
+    <ul></ul>
+
+    <section>
+      <h1>Player Login</br></h1>
+      <form id='myForm' method="POST" >
+        <!-- action='/login'> -->
+          <input type="text" id="user" name="user" placeholder="Username" required /> <br />
+          <input type="password" id="pass" name="pass" placeholder="Password" required /> <br />
+          <button onmouseover="saveLocalFile();" id="login" formaction="/login">Login</button>
+          <!-- <input type="submit" id="submit" value="Login" > -->
+          <!-- <button onclick="login()">Login</button> -->
+      </form>
+    </section>
+
+    <div>
+      <h2><a href="/registerUser.html">Register New Player</a></h2>
+    </div>
+    <!-- <script src="./jquery.min.js"></script> -->
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="../jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
+    <!-- <script src="../script.js"></script> -->
+    <title>Tic Tac Toe</title>
+
+</head>
+<body>
+<body onload= "startGame()" >
+  <div id="leftBlock" style= "display: inline-block">
+      <div id="user" style= "display: inline-block">      </div>
+      <div id="userPic" style= "display: inline-block"></div>
+      <h1 style= 'class: clearBoth'><br />Tic Tac Toe<br /></h1>
+
+      <input type="hidden" id="hiddenGameID" name="hiddenGameID">
+
+      <div id= "myGame">
+      </div>
+
+      <div id= "infoScreen">
+      </div>
+
+      <div id= "buttonDiv">
+        <button type="button" onclick="quitGame()"
+        id="quit" value="Quit Game (Forfeit Match)">Quit Game (Forfeit Match)</button>
+      </div>
+   </div>
+   <div id="rightBlock" style= "display: inline-block">
+      <div id="chatWindow">
+          <div id="output"></div>
+      </div>
+      <div id="handle" ></div>
+      <input id="message" type= "text" placeholder= "Message"></input></br>
+      <button type="button" id="send" onclick="sendMsg()">Send Message</button>
+
+   </div>
+   <script src="../script.js"></script>
+</body>
+</html>

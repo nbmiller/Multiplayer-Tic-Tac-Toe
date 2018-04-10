@@ -1,0 +1,91 @@
+
+h1{
+size.text-decoration-color: #ffffff;
+	display: inline;
+	font-size: 45pt;
+	text-align: center;
+	color: white;
+	text-shadow: 3px 2px red;
+  padding-bottom: 20px;
+}
+
+.user{
+  size.text-decoration-color: #ffffff;
+  	display: inline-block;
+  	font-size: 45pt;
+  	text-align: center;
+  	color: white;
+  	text-shadow: 3px 2px red;
+    padding-bottom: 20px;
+}
+
+div, userPic{
+	/* display: inline-block; */
+	/* float: right; */
+}
+
+body {
+  font-family: sans-serif;
+  background-image: url("../back.jpg");
+}
+
+input, button{
+  border-radius: 10px;
+  border: 2px solid black;
+  /* padding: 5px; */
+  /* width: 200px;
+  height: 50px; */
+  /* margin-bottom: 15px; */
+  font-size: 1.5em;
+}
+#message{
+	/* padding-left: 5px; */
+	width: 346px;
+}
+
+#send{
+	/* padding-left: 5px; */
+	width: 350px;
+}
+
+button{
+  width: auto;
+  height: auto;
+}
+
+.quit{
+  width: auto;
+  height: auto;
+}
+
+#output{
+	height: 320px;;
+	overflow-y:auto;
+	/* overflow-x:auto; */
+	width: 350px;
+	word-wrap: break-word
+	background-color: transparent;
+	/* opacity: 0.2; */
+	/* background-image: url("../back.jpg"); */
+	/* background-color: #d4fbfc; */
+}
+#rightBlock{
+  /* margin-top:50px; */
+	background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: auto;
+  /* padding: 20px; */
+}
+
+section{
+  margin-top:50px;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 230px;
+  padding: 20px;
+}
+
+span:hover{
+  cursor:pointer;
+}

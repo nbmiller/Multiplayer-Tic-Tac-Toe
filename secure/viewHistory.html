@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="../jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
+    <script src="../secure/viewHistory.js"></script>
+
+    <title>Player History</title>
+
+</head>
+<body>
+<!-- <body onload= "getLocalFile()" > -->
+<body onload= "start()" >
+  <div id="user"></div>
+  <h1>History<br /></h1>
+
+  <div id= "myTable">
+  </div>
+    <div id= "play">
+
+    <input type="hidden" id="hiddenUser" name="hiddenUser">
+    <button type="button" onclick="gameMatchMake()" id="play" value="Play Game">Play Game</button>
+    <button type="button" onclick="logout()" id="logout" value="Logout">Logout</button>
+    </div>
+  <!-- </form> -->
+
+</body>
+</html>

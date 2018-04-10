@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+
+    <title>Register New User</title>
+
+    <link rel="stylesheet" href="./style.css"/>
+
+</head>
+<body>
+
+
+
+    <ul></ul>
+
+    <section2>
+      <h1>Register</h1>
+      <form id='userForm' method="POST" action='/register'>
+        <div id= "checkB" style="float: right;"><h4>
+         <input type="radio" name="gender" id="maleB"value="Male" checked> Male<br>
+       <input type="radio" name="gender" id= "femaleB"value="Female"> Female<br>
+       <input type="radio" name="gender" id="otherB"value="Other"> Other</h4><br>
+       </div>
+
+          <input type="text" id="username" name="username" placeholder="Username" required /> <br />
+          <input type="password" id="password" name="password" placeholder="Password" required /> <br />
+
+
+
+          <input type="text" id="firstname" name="fname" placeholder="First Name" required /> <br />
+          <input type="text" id="lastname" name="lname" placeholder="Last Name" required /> <br />
+          Age:<br />
+          <input type="number" name="age" min="1" max="100" required /> <br />
+
+          <input type="email" id="email" placeholder="Email" size="17" name="email" required><br />
+          <input type="submit" id="submit" value="Register" >
+          <!-- <button onclick="login()">Login</button> -->
+      </form>
+    </section2>
+
+
+    <!-- <script src="./jquery.min.js"></script> -->
+    <!-- <script src="./script.js"></script> -->
+
+</body>
+</html>
