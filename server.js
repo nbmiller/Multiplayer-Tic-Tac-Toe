@@ -284,7 +284,7 @@ socket.on('logout', function(data){
   ** On One Player Quit Game
   */
   socket.on('popFromActivePlayers', function(data){
-    pNames.pop(data.winner);
+    pNames.pop(data.userID);
   });
 
   /*

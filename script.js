@@ -285,7 +285,7 @@ function recievedOtherPlayer(otherPlayer, quitter){
 **/
 socket.on('matchEndedEarly', function(data){
    socket.emit('onePlayerQuit', {gameID: data.GameID, winner: data.winner});
-
+   socket.emit('popFromActivePlayers', {gameID: data.GameID, userID: data.winner});
     sendToHistory();
 });
 
@@ -303,7 +303,7 @@ socket.on('onePlayerQuit', function(data){
   quitB.addEventListener("click", function(event) {
     // Cancel the default action, if needed
     event.preventDefault();
-    socket.emit('popFromActivePlayers', {gameID: data.GameID, winner: data.winner});
+    socket.emit('popFromActivePlayers', {gameID: data.GameID, userID: data.winner});
     sendToHistory();
   });
 });
