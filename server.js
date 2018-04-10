@@ -149,10 +149,25 @@ io.on('connection', function(socket){
   ** On Get Online User Count
   */
   socket.on('getOnlineUserCount', function(data){
+    query = {'loggedIn': true};
+    var numUsers=0;
+    User.find(query, function(err, doc){
+      if (err)
+        console.log(err);
+      if (!doc)
+       console.log(" Socket not found in DB on join ");
+      else{
+        doc.forEach(function(user, err){
+          if (err)   console.log(err);
+          numUsers++;
+        });
+        socket.emit('gotOnlineUserCount', {clients: numUsers, inGame: pNames.length });
+      }
+
     // console.log(data.gameID, "is the game ID the button press occured");
     // console.log(io.sockets.in(data.gameID).length, "is the number of users in the room"  );``
     // io.sockets.in(data.gameID).emit('messageSent', data);  //Broadcast to all sockets in room
-    socket.emit('gotOnlineUserCount', {clients: clients, inGame: pNames.length });
+
     // wss.sockets.in(data.gameID).emit('messageSent', data);
   });
 
