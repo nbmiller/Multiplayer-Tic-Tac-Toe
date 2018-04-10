@@ -75,7 +75,7 @@ socket.on('gotOnlineUserCount', function(data){
   var pOnline=document.getElementById('playersOnline');
   pOnline.style.fontSize= '12pt';
   pOnline.innerHTML = '<b>Players Online:</b> '+data.clients+
-  "</br><b>Players In Game: </b>"+ data.inGame+'</br>';
+  "</br><b>Players In Game/Waiting: </b>"+ data.inGame+'</br>';
 });
 
 
