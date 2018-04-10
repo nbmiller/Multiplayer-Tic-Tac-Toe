@@ -11,8 +11,8 @@ var path = require('path');
 var port = process.env.PORT || 8080;
 var server = http.createServer(app).listen(port);
 var fs = require('fs');
-// var io = require('socket.io')(server);
-const wss = new SocketServer({ server });
+var io = require('socket.io')(server);
+// const wss = new SocketServer({ server });
 
 // Schema is a constructor
 var mongoose = require('mongoose');
@@ -129,8 +129,8 @@ var firstRun = true;
 /*
 ** On Socket Connection
 */
-wss.on('connection', function(socket){
-// io.on('connection', function(socket){
+// wss.on('connection', function(socket){
+io.on('connection', function(socket){
   console.log('new connection', socket.id);
   clients++;
   console.log('Clients now at', clients);
@@ -141,8 +141,8 @@ wss.on('connection', function(socket){
   socket.on('sendMessage', function(data){
     // console.log(data.gameID, "is the game ID the button press occured");
     // console.log(io.sockets.in(data.gameID).length, "is the number of users in the room"  );``
-    // io.sockets.in(data.gameID).emit('messageSent', data);  //Broadcast to all sockets in room
-    wss.sockets.in(data.gameID).emit('messageSent', data);
+    io.sockets.in(data.gameID).emit('messageSent', data);  //Broadcast to all sockets in room
+    // wss.sockets.in(data.gameID).emit('messageSent', data);
   });
 
   /*
@@ -177,8 +177,8 @@ wss.on('connection', function(socket){
   socket.on('bPress', function(data){
     // console.log(data.gameID, "is the game ID the button press occured");
     // console.log(io.sockets.in(data.gameID).length, "is the number of users in the room"  );``
-    // io.sockets.in(data.gameID).emit('bPress', data);  //Broadcast to all sockets in room
-    wss.sockets.in(data.gameID).emit('bPress', data);
+    io.sockets.in(data.gameID).emit('bPress', data);  //Broadcast to all sockets in room
+    // wss.sockets.in(data.gameID).emit('bPress', data);
   });
 
   /*

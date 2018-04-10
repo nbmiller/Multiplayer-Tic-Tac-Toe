@@ -1,6 +1,7 @@
 
 // var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':{{port}}');
-var socket = wss.connect(window.location.protocol + '//' + window.location.hostname + ':{{port}}');
+var socket = io.connect(window.location.protocol + '//' + window.location.hostname);
+// var socket = wss.connect(window.location.protocol + '//' + window.location.hostname + ':{{port}}');
 // var socket = io.connect("http://localhost:8080");
 /*
 ** Start on viewHistory.html, get playername and login
