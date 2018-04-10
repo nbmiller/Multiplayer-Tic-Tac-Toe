@@ -71,10 +71,10 @@ function getOnlineUserCount(){
 }
 
 socket.on('gotOnlineUserCount', function(data){
-  console.log( 'got number of online users');
+  console.log( 'Socket Clients Online: ', data.clients);
   var pOnline=document.getElementById('playersOnline');
   pOnline.style.fontSize= '12pt';
-  pOnline.innerHTML = '<b>Players Online:</b> '+data.clients+
+  pOnline.innerHTML = '<b>Players Online:</b> '+data.numUsers+
   "</br><b>Players In Game: </b>"+ data.inGame+'</br>';
 });
 
