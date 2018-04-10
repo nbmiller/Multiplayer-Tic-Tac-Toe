@@ -76,7 +76,8 @@ socket.on('gotOnlineUserCount', function(data){
   // console.log( 'Socket Clients Online: ', data.clients);
   var pOnline=document.getElementById('playersOnline');
   pOnline.style.fontSize= '12pt';
-  pOnline.innerHTML = '<b>Players Online:</b> '+data.clients+
+  pOnline.innerHTML = '<b>Players Online:</b> '+data.numUsers+
+  // pOnline.innerHTML = '<b>Players Online:</b> '+data.clients+
   "</br><b>Players In Game/Waiting: </b>"+ data.inGame+'</br>';
 });
 
