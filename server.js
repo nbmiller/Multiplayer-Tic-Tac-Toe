@@ -146,6 +146,17 @@ io.on('connection', function(socket){
   });
 
   /*
+  ** On Get Online User Count
+  */
+  socket.on('getOnlineUserCount', function(data){
+    // console.log(data.gameID, "is the game ID the button press occured");
+    // console.log(io.sockets.in(data.gameID).length, "is the number of users in the room"  );``
+    // io.sockets.in(data.gameID).emit('messageSent', data);  //Broadcast to all sockets in room
+    socket.emit('gotOnlineUserCount', {clients: clients, inGame: pNames.length });
+    // wss.sockets.in(data.gameID).emit('messageSent', data);
+  });
+
+  /*
   ** On Socket Join Room
   */
   socket.on('join', function(data){
@@ -188,6 +199,11 @@ io.on('connection', function(socket){
     var pName = data.userName;
     socket.userName = pName;  //set socket to have username variable
     // console.log(pName, "log in attempt");
+    //push onto arrays
+    // pSockIDs.push(socket.id);
+    // pNames.push(pName);
+
+
     query = {'username': pName};
     User.findOneAndUpdate(query, {loggedIn: true, socketID: socket.id},
        {upsert:false}, function(err, doc){
@@ -254,7 +270,7 @@ socket.on('logout', function(data){
         else{
               var sockID=doc.socketID;
               // console.log(data.winner, " NOT FOUND AFTER OTHER PLAYER QUIT");
-          console.log(doc.username, "found and quit button about to be updated");
+          // console.log(doc.username, "found and quit button about to be updated");
               socket.to(sockID).emit('onePlayerQuit', data);
         }
 
@@ -264,6 +280,12 @@ socket.on('logout', function(data){
     // io.sockets.in(data.gameID).emit('onePlayerQuit', data);
   });
 
+  /*
+  ** On One Player Quit Game
+  */
+  socket.on('popFromActivePlayers', function(data){
+    pNames.pop(data.winner);
+  });
 
   /*
   ** On getOtherPlayer
@@ -276,6 +298,7 @@ socket.on('logout', function(data){
       if(!doc)//|| doc.password !== pass)
        console.log(data.gameID, "UNSUCCESSFULLY GOT OTHER PLAYER");
        else{
+         pNames.pop(data.thisPlayer);
          // console.log(doc.players.length, "is length of player array to find other player");
          for(var i = 0;i< doc.players.length;i++){
            // console.log(doc.players[i].playerName, "is current player");
@@ -381,7 +404,7 @@ socket.on('logout', function(data){
     // console.log("Current Username: ", data.userName);
 
 
-    //push onto arrays
+    // //push onto arrays
     pSockIDs.push(thisSocket);
     pNames.push(thisUser);
 
@@ -439,7 +462,7 @@ socket.on('logout', function(data){
                  //  console.log(userName, " NOT ADDED to game ", thisGame._id);
                  else{
                    console.log(userName, " is added to game ", thisGame._id);
-
+                   pNames.push(userName);
                    if(playerNumber ===1)
                     playerNumber = 2;
                     else {
@@ -456,12 +479,16 @@ socket.on('logout', function(data){
                      //  console.log(userName, " NOT ADDED to game ", thisGame._id);
                      else{
                        console.log(userName, " is added to game ", thisGame._id);
+                       // pSockIDs.push(pSocket);
+                       pNames.push(userName);
                        // return fs.createReadStream(__dirname + '/secure/game.html');
                        // socket.emit('matchMakeComplete', data);
                      }
                    });
                  }
                  // io.to(thisGameID)
+                 // pSockIDs.push(pSocket);
+                 // pNames.push(doc.username);
                  socket.emit('matchMakeComplete', {gameID: thisGameID});
                  prevSObj.emit('matchMakeComplete', {gameID: thisGameID});
                });
@@ -492,8 +519,8 @@ socket.on('logout', function(data){
          {upsert:false}, function(err, doc){
         if (err)
           console.log(err);
-        // if (!doc)
-        //  console.log(pSocket, " NOT LOGGED OUT PROPERLY");
+        if (!doc)
+         console.log(pSocket, "Closed");
         else{
           // console.log(doc.username, " is logged out ");
           if(pSockIDs.length > 0 && pNames.length > 0){

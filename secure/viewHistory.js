@@ -1,6 +1,8 @@
 
 // var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':{{port}}');
 var socket = io.connect(window.location.protocol + '//' + window.location.hostname);
+
+
 // var socket = wss.connect(window.location.protocol + '//' + window.location.hostname + ':{{port}}');
 // var socket = io.connect("http://localhost:8080");
 /*
@@ -51,11 +53,31 @@ function getLocalFile(){
   userna.style.fontSize= '35pt';
   userna.innerHTML = '<b>'+usern+"</b>";
   document.getElementById('hiddenUser').value = usern;
-  console.log(document.getElementById('hiddenUser').value);
+
 
   getUser(usern);
   return usern;
 }
+
+
+/*
+** Get Number of Online Users from Server
+**/
+var timer = setInterval(function(){ getOnlineUserCount() }, 1000);
+
+function getOnlineUserCount(){
+  socket.emit('getOnlineUserCount');
+  // console.log( 'getting number of online users');
+}
+
+socket.on('gotOnlineUserCount', function(data){
+  console.log( 'got number of online users');
+  var pOnline=document.getElementById('playersOnline');
+  pOnline.style.fontSize= '12pt';
+  pOnline.innerHTML = '<b>Players Online:</b> '+data.clients+
+  "</br><b>Players In Game: </b>"+ data.inGame+'</br>';
+});
+
 
 /*
 ** Logout
@@ -87,7 +109,7 @@ function getUser(usern){
           if (xhttp.readyState == 4) {
               if(xhttp.status == 200) {
                   userArray1 = JSON.parse(xhttp.responseText);
-                  console.log(xhttp.responseText);
+                  // console.log(xhttp.responseText);
                }
           }
           else if (xhttp.status == 400) {
@@ -97,7 +119,7 @@ function getUser(usern){
       xhttp.send();
 
       var numUsers = Object.keys(userArray1).length
-      console.log("UserArray Length is ", numUsers);
+      // console.log("UserArray Length is ", numUsers);
       var boxID = 0;
       var table;
       var myTable = document.getElementById("myTable");
@@ -168,7 +190,7 @@ function gameMatchMake(){
   if(!matchMakePressed){
     matchMakePressed = true;
     var pid = document.getElementById("hiddenUser").value;
-    console.log(pid, "socket is trying to matchmake");
+    // console.log(pid, "socket is trying to matchmake");
     socket.emit('matchMake', {socketID: socket.id, userName: pid} );
   }
 }

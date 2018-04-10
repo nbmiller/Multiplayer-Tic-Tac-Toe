@@ -303,9 +303,12 @@ socket.on('onePlayerQuit', function(data){
   quitB.addEventListener("click", function(event) {
     // Cancel the default action, if needed
     event.preventDefault();
+    socket.emit('popFromActivePlayers', {gameID: data.GameID, winner: data.winner});
     sendToHistory();
   });
 });
+
+
 
 /*
 ** Send to history.html
